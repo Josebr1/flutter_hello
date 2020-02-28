@@ -15,9 +15,14 @@ class HomePage extends StatelessWidget {
   _body() {
     return Container(
       color: Colors.white,
-      child: Center(
-        child: _button(),
-      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _button(),
+          _button(),
+          _button(),
+        ],
+      )
     );
   }
 
