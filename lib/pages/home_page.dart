@@ -18,52 +18,48 @@ class HomePage extends StatelessWidget {
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _text(),
-          _pageView(),
-          _buttons()
-        ],
+        children: <Widget>[_text(), _pageView(), _buttons()],
       ),
     );
   }
 
   Container _pageView() {
     return Container(
-          height: 300,
-          child: PageView(
-            children: <Widget>[
-              _img("assets/images/dog1.png"),
-              _img("assets/images/dog2.png"),
-              _img("assets/images/dog3.png"),
-              _img("assets/images/dog4.png"),
-              _img("assets/images/dog5.png"),
-            ],
-          ),
-        );
+      margin: EdgeInsets.only(top: 20, right: 20),
+      height: 300,
+      child: PageView(
+        children: <Widget>[
+          _img("assets/images/dog1.png"),
+          _img("assets/images/dog2.png"),
+          _img("assets/images/dog3.png"),
+          _img("assets/images/dog4.png"),
+          _img("assets/images/dog5.png"),
+        ],
+      ),
+    );
   }
 
   Column _buttons() {
     return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _button('ListView'),
-                _button('Page 2'),
-                _button('Page 3'),
-              ],
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _button('Snack'),
-                _button('Dialog'),
-                _button('Toast'),
-              ],
-            ),
+            _button('ListView'),
+            _button('Page 2'),
+            _button('Page 3'),
           ],
-        );
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _button('Snack'),
+            _button('Dialog'),
+            _button('Toast'),
+          ],
+        ),
+      ],
+    );
   }
 
   _button(String text) {
