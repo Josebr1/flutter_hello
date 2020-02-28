@@ -14,21 +14,17 @@ class HomePage extends StatelessWidget {
   }
 
   _body(context) {
-    Size size = MediaQuery.of(context).size;
-
     return Container(
-        height: size.height,
-        color: Colors.yellow,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            _button(),
-            _button(),
-            _button(),
-          ],
-        ));
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _text(),
+          _img(),
+          _button(),
+        ],
+      ),
+    );
   }
 
   _button() {
@@ -50,9 +46,7 @@ class HomePage extends StatelessWidget {
 
   _img() {
     return Image.asset(
-      "assets/images/dog4.png",
-      width: 300,
-      height: 300,
+      "assets/images/dog1.png",
       fit: BoxFit.cover,
     );
   }
