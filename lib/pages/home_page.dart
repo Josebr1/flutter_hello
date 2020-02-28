@@ -5,25 +5,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Hello Flutter'),
-          centerTitle: true,
-        ),
-        body: _body());
+      appBar: AppBar(
+        title: Text('Hello Flutter'),
+        centerTitle: true,
+      ),
+      body: _body(context),
+    );
   }
 
-  _body() {
+  _body(context) {
+    Size size = MediaQuery.of(context).size;
+
     return Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          _button(),
-          _button(),
-          _button(),
-        ],
-      )
-    );
+        height: size.height,
+        color: Colors.yellow,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _button(),
+            _button(),
+            _button(),
+          ],
+        ));
   }
 
   _button() {
@@ -42,6 +47,7 @@ class HomePage extends StatelessWidget {
   void _onClickOK() {
     print('Clicou no botão!');
   }
+
   _img() {
     return Image.asset(
       "assets/images/dog4.png",
