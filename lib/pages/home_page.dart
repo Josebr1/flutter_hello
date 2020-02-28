@@ -14,8 +14,7 @@ class HomePage extends StatelessWidget {
   }
 
   _body(context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
+    return SingleChildScrollView(
       child: Container(
         color: Colors.white,
         child: Column(
