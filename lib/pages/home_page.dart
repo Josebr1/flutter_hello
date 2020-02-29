@@ -14,12 +14,16 @@ class HomePage extends StatelessWidget {
   }
 
   _body(context) {
-    return SingleChildScrollView(
+    return Container(
       child: Container(
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[_text(), _pageView(), _buttons()],
+          children: <Widget>[
+            _text(),
+            _pageView(),
+            _buttons(context),
+          ],
         ),
       ),
     );
@@ -41,30 +45,30 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Column _buttons() {
+  Column _buttons(context) {
     return Column(
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button('ListView'),
-            _button('Page 2'),
-            _button('Page 3'),
+            _button(context, 'ListView'),
+            _button(context, 'Page 2'),
+            _button(context, 'Page 3'),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button('Snack'),
-            _button('Dialog'),
-            _button('Toast'),
+            _button(context, 'Snack'),
+            _button(context, 'Dialog'),
+            _button(context, 'Toast'),
           ],
         ),
       ],
     );
   }
 
-  _button(String text) {
+  _button(context, String text) {
     return RaisedButton(
       color: Colors.blue,
       child: Text(
@@ -73,12 +77,12 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      onPressed: _onClickOK,
+      onPressed: () => _onClickOK(context),
     );
   }
 
-  void _onClickOK() {
-    print('Clicou no botão!');
+  void _onClickOK(BuildContext context,) {
+    Navigator.push(context, route)
   }
 
   _img(String img) {
