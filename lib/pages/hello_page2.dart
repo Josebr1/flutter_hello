@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/widgets/blue_button.dart';
 
 class HelloPage2 extends StatelessWidget {
   @override
@@ -14,11 +15,16 @@ class HelloPage2 extends StatelessWidget {
 
   _body(context) {
     return Center(
-      child: RaisedButton(
-        child: Text('Voltar'),
-        onPressed: () =>
-          Navigator.pop(context)
+      child: BlueButton(
+        "Voltar",
+        onPressed: () => _onClickVoltar(context),
+        color: Colors.red,
       ),
+
     );
+  }
+
+  _onClickVoltar(context){
+    Navigator.pop(context, 'Tela 2');
   }
 }
