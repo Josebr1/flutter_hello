@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello/drawer_list.dart';
 import 'package:flutter_hello/pages/hello_listview.dart';
 import 'package:flutter_hello/pages/hello_page1.dart';
 import 'package:flutter_hello/pages/hello_page2.dart';
 import 'package:flutter_hello/pages/hello_page3.dart';
 import 'package:flutter_hello/utils/nav.dart';
 import 'package:flutter_hello/widgets/blue_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,15 +17,27 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: _body(context),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          _onClickFab();
+        },
+      ),
+      drawer: DrawerList(),
     );
+  }
+
+  void _onClickFab() {
+    print('Adicionar');
   }
 
   _body(context) {
     return Container(
+      padding: EdgeInsets.all(6.0),
       child: Container(
         color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             _text(),
             _pageView(),
@@ -122,7 +136,16 @@ class HomePage extends StatelessWidget {
         });
   }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: 'This is center Short Toast',
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
 
   void _onClickNavigator(BuildContext context, Widget page) async {
     String s = await push(context, page);
