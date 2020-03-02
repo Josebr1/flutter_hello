@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hello/pages/hello_listview.dart';
 import 'package:flutter_hello/pages/hello_page1.dart';
@@ -28,7 +27,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             _text(),
             _pageView(),
-            _buttons(context),
+            _buttons(),
           ],
         ),
       ),
@@ -51,37 +50,53 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Column _buttons(context) {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  _buttons() {
+    return Builder(
+      builder: (context) {
+        return Column(
           children: <Widget>[
-            BlueButton('ListView', onPressed: () => _onClickNavigator(context, HelloListView())),
-            BlueButton('Page 2', onPressed: () => _onClickNavigator(context, HelloPage2())),
-            BlueButton('Page 3', onPressed: () => _onClickNavigator(context, HelloPage3())),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton('ListView',
+                    onPressed: () =>
+                        _onClickNavigator(context, HelloListView())),
+                BlueButton('Page 2',
+                    onPressed: () => _onClickNavigator(context, HelloPage2())),
+                BlueButton('Page 3',
+                    onPressed: () => _onClickNavigator(context, HelloPage3())),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton('Snack', onPressed: () => _onClickSnack(context)),
+                BlueButton('Dialog', onPressed: _onClickDialog),
+                BlueButton('Toast', onPressed: _onClickToast),
+              ],
+            ),
           ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            BlueButton('Snack', onPressed: _onClickSnack),
-            BlueButton('Dialog', onPressed: _onClickDialog),
-            BlueButton('Toast', onPressed: _onClickToast),
-          ],
-        ),
-      ],
+        );
+      },
     );
   }
 
-  _onClickSnack() {
+  _onClickSnack(context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text('Olá Flutter'),
+      action: SnackBarAction(
+        label: 'OK',
+        textColor: Colors.yellow,
+        onPressed: () {
+          print('Olá');
+        },
+      ),
+    ));
   }
 
-  _onClickDialog() {
-  }
+  _onClickDialog() {}
 
-  _onClickToast() {
-  }
+  _onClickToast() {}
 
   void _onClickNavigator(BuildContext context, Widget page) async {
     String s = await push(context, page);
@@ -109,6 +124,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
 }
